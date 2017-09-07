@@ -13,3 +13,7 @@ class OrtnecPage:
 
     def getElement(self):
         return self.driver.find_element_by_css_selector(css_selector='.fleft h3')
+
+    #returt text that contain in Copyright block on the bottom of page
+    def getCopyrightBlockText(self):
+        return self.driver.find_element_by_css_selector(css_selector='.copyright').text
