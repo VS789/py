@@ -4,9 +4,9 @@ from selenium import webdriver
 def googleSearchOrtnecTest():
     driver = webdriver.Chrome()
     googlePage = GooglePage (driver)
-    googlePage.googleIsLoaded()
     googlePage.doSearchByTextUsingEnter('Ortnec')
     googlePage.openFirstResultFirstLink().getTitle()
+    assert "ortnec.com/" == googlePage.getTextFirstLinkInResultList()
     assert "Ortnec" in driver.title
     driver.quit()
 

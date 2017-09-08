@@ -12,9 +12,9 @@ class GooglePage():
     #search result selectors
     listOfSearchResult = ".srg"
     firstResult = ".srg .g:nth-child(1)"
-    linkFromFirstResult = ".srg .g:nth-child(1) .f.kv._SWb ._Rm"
 
     #first search Result Selectors
+    linkOfFirstResult = ".srg .g:nth-child(1) .f.kv._SWb ._Rm"
     firstLink = ".srg .g:nth-child(1) .r a"
     secondLink = ".srg .g:nth-child(1) .s .f.kv._SWb > a"
 
@@ -36,8 +36,8 @@ class GooglePage():
         self.driver.find_element_by_css_selector(self.listOfSearchResult)
 
     #return text of first link from search result
-    def getLinkOfFirstResult(self):
-        return self.driver.find_element_by_css_selector(css_selector=self.linkFromFirstResult).text
+    def getTextFirstLinkInResultList(self):
+        return self.driver.find_element_by_css_selector(css_selector=self.linkOfFirstResult).text
 
 
     #4. On Search Result page click on first link
@@ -46,7 +46,7 @@ class GooglePage():
         self.driver.find_element_by_css_selector(css_selector=self.firstLink).click()
         return OrtnecPage(self.driver)
 
-    #4. On Search Result page click on first link
+    #4. On Search Result page click on second link
     #use second link (Navigete to this page) for navigation
     def openFirstResultSecondLink(self):
         self.driver.find_element_by_css_selector(css_selector=self.secondLink).click()

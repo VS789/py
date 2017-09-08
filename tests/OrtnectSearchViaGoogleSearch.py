@@ -15,7 +15,7 @@ class OrtnectSearchViaGoogleSearch(unittest.TestCase):
         #2. Type Ortnec in search input field and #3. Press "Enter" button
         page.doSearchByTextUsingEnter('Ortnec')
         #a) check http://ortnec.com link is first in the list of results
-        assert "ortnec.com" == page.getLinkOfFirstResult().text
+        assert "ortnec.com/" == page.getTextFirstLinkInResultList()
         #b) for EACH link on the 1-st result page: click on link and check 'ortnec' text is present on opened page
         assert "ortnec" in page.openFirstResultFirstLink().getCopyrightBlockText()
 
@@ -26,7 +26,7 @@ class OrtnectSearchViaGoogleSearch(unittest.TestCase):
         #2. Type Ortnec in search input field and #3. Press "Enter" button
         page.doSearchByTextUsingEnter('Ortnec')
         #a) check http://ortnec.com link is first in the list of results
-        assert "ortnec.com" == page.getLinkOfFirstResult().text
+        assert "ortnec.com/" == page.getTextFirstLinkInResultList()
         #b) for EACH link on the 1-st result page: click on link and check 'ortnec' text is present on opened page
         assert "ortnec" in page.openFirstResultSecondLink().getCopyrightBlockText()
 
