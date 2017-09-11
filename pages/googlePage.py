@@ -10,8 +10,10 @@ class GooglePage():
     searchField = "#gs_lc0 input:nth-child(1)"
 
     #search result selectors
-    listOfSearchResult = ".srg"
-    firstResult = ".srg .g:nth-child(1)"
+    listOfSearchResult = " .srg"
+    elementsOfSearch = " .g"
+    bigLink = ' .r a'
+    firstResult = " .srg .g:nth-child(1)"
 
     #first search Result Selectors
     linkOfFirstResult = ".srg .g:nth-child(1) .f.kv._SWb ._Rm"
@@ -39,7 +41,6 @@ class GooglePage():
     def getTextFirstLinkInResultList(self):
         return self.driver.find_element_by_css_selector(css_selector=self.linkOfFirstResult).text
 
-
     #4. On Search Result page click on first link
     #use first link(Big blue link) for navigation
     def openFirstResultFirstLink(self):
@@ -51,3 +52,15 @@ class GooglePage():
     def openFirstResultSecondLink(self):
         self.driver.find_element_by_css_selector(css_selector=self.secondLink).click()
         return OrtnecPage(self.driver)
+
+    #return all text from any page (text converts to lower register)
+    def getAllTextOnOpenedPageInLowRegister(self):
+        return self.driver.find_element_by_tag_name('body').__getattribute__('text').lower()
+
+    #list of searched results
+    def listOfAllElementsOfSearch(self):
+        return self.driver.find_elements_by_css_selector(css_selector=self.listOfSearchResult+self.elementsOfSearch)
+
+    #return link for searched element
+    def getLinkOfElementFormSearchList(self,element):
+        return element.find_element_by_css_selector(css_selector=self.bigLink)
